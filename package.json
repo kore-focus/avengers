@@ -1,7 +1,11 @@
 {
   "name": "root",
   "private": true,
+  "dependencies": {
+    "typescript": "^3.3.3333"
+  },
   "devDependencies": {
-    "lerna": "^3.13.1"
+    "lerna": "^3.13.1",
+    "tslint": "^5.13.1"
   }
 }
