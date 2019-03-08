@@ -109,3 +109,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#
+# Vim specific ignores
+#
+
+*.swp
+*.swo
