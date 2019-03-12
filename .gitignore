@@ -116,3 +116,5 @@ Temporary Items
 
 *.swp
 *.swo
+
+dist/**/*

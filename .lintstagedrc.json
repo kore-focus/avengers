@@ -1,0 +1,19 @@
+{
+  "linters": {
+    "**/*.ts": [
+      "eslint --fix",
+      "git add"
+    ],
+    "**/*.{md,html,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    "openapi/**/*.{yml, yaml}": [
+      "speccy lint openapi.yml",
+      "git add"
+    ]
+  },
+  "ignore": [
+
+  ]
+}
