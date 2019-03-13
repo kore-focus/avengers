@@ -2,13 +2,13 @@
   "parser": "@typescript-eslint/parser",
   "env": {
     "node": true,
-    "mocha": true
+    "mocha": true,
+    "jest/globals": true
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint", "jest"],
   "extends": [
     "eslint:recommended",
+    "plugin:jest/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint"
@@ -23,10 +23,13 @@
 
     "no-shadow": 2,
     "no-shadow-restricted-names": 2,
-    "no-unused-vars": [2, {
-      "vars": "local",
-      "args": "after-used"
-    }],
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "local",
+        "args": "after-used"
+      }
+    ],
 
     "for-direction": 2,
     "no-await-in-loop": 2,
@@ -63,9 +66,12 @@
     "curly": [2, "all"],
     "default-case": 2,
     "dot-location": [2, "property"],
-    "dot-notation": [2, {
-      "allowKeywords": true
-    }],
+    "dot-notation": [
+      2,
+      {
+        "allowKeywords": true
+      }
+    ],
     "eqeqeq": 2,
     "guard-for-in": 2,
     "handle-callback-err": 2,
@@ -73,9 +79,12 @@
     "no-caller": 2,
     "no-div-regex": 2,
     "no-else-return": 2,
-    "no-empty-function": [2, {
-      "allow": ["arrowFunctions"]
-    }],
+    "no-empty-function": [
+      2,
+      {
+        "allow": ["arrowFunctions"]
+      }
+    ],
     "no-empty-pattern": 2,
     "no-eq-null": 2,
     "no-eval": 2,
@@ -119,31 +128,41 @@
 
     "valid-jsdoc": 0,
 
-    "arrow-body-style": [2, "as-needed", {
-      "requireReturnForObjectLiteral": false
-    }],
+    "arrow-body-style": [
+      2,
+      "as-needed",
+      {
+        "requireReturnForObjectLiteral": false
+      }
+    ],
     "arrow-parens": 2,
     "arrow-spacing": 2,
     "constructor-super": 2,
-    "generator-star-spacing": [2, {
-      "before": false,
-      "after": true
-    }],
+    "generator-star-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
     "no-class-assign": 2,
     "no-const-assign": 2,
     "no-dupe-class-members": 2,
     "no-duplicate-imports": 2,
     "no-this-before-super": 2,
-    "no-useless-constructor" : 2,
+    "no-useless-constructor": 2,
     "no-var": 2,
     "prefer-arrow-callback": 2,
     "prefer-const": 2,
     "prefer-template": 2,
     "require-yield": 2,
     "sort-imports": 2,
-    "yield-star-spacing": [2, {
-      "before": false,
-      "after": true
-    }]
+    "yield-star-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ]
   }
 }
