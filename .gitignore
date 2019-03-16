@@ -117,4 +117,11 @@ Temporary Items
 *.swp
 *.swo
 
+
+#
+# build specific ignores
+#
+
+**/build/**/*
 dist/**/*
+

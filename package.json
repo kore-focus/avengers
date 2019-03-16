@@ -3,12 +3,16 @@
   "private": true,
   "scripts": {
     "setup": "./scripts/setup.sh",
-    "build": "npx lerna run build",
+    "build": "./scripts/build.sh",
     "clean": "npx lerna clean --yes"
   },
   "dependencies": {
     "@types/node": "^11.10.5",
     "typescript": "^3.3.3333"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danman1188/avengers"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",

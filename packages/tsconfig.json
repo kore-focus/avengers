@@ -4,17 +4,14 @@
     "module": "commonjs",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "../dist/src",
-    "rootDir": "./",
-    "lib": [
-      "ES2015"
-    ],
+    "lib": ["ES2015"],
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
+    "composite": true,
 
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -26,7 +23,5 @@
     "emitDecoratorMetadata": true,
     "importHelpers": true
   },
-  "include": [
-    "./captain-america/src/**/*"
-  ]
+  "exclude": ["**/__tests__/**/*", "**/build/**/*"]
 }
