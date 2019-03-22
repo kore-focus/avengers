@@ -1,3 +1,26 @@
+# ignore hidden folders
+./.git
+./.env
+./.circleci
+./.DS_Store
+./**/.DS_Store
+
+# ignore nodejs related folders
 ./node_modules
-./pacakges/**/node_modules/*
-./pacakges/**/__tests__/*
+./packages/**/node_modules
+
+# ignore codebase stuff
+./scripts
+./.commitlintrc.json
+./.eslintignore.json
+./.gitignore.json
+./.huskyrc.json
+./.lintstagedrc.json
+./.prettierrc.json
+./jest.config.js
+./package-lock.json
+./README.md
+./packages/**/__tests__
+./packages/**/package-lock.json
+./packages/**/README.md
+./packages/**/build

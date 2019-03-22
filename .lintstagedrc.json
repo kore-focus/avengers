@@ -1,19 +1,8 @@
 {
   "linters": {
-    "**/*.ts": [
-      "eslint --fix",
-      "git add"
-    ],
-    "**/*.{md,html,css}": [
-      "prettier --write",
-      "git add"
-    ],
-    "openapi/**/*.{yml, yaml}": [
-      "speccy lint openapi.yml",
-      "git add"
-    ]
+    "**/*.ts": ["npx eslint --fix", "git add"],
+    "**/*.{md,html,css}": ["npx prettier --write", "git add"],
+    "openapi/**/*.{yml, yaml}": ["npx speccy lint openapi.yml", "git add"]
   },
-  "ignore": [
-
-  ]
+  "ignore": []
 }
