@@ -1,5 +1,3 @@
-#! /usr/bin/env bash
-
 # install the main dependency specifically install lerna
 npm install
 

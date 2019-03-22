@@ -1,4 +1,5 @@
 ## Installation
+
 Some `homebrew` and `npm` knowledge is required:
 
 1. Install `xcode` and the apple developer tools
@@ -15,9 +16,10 @@ Some `homebrew` and `npm` knowledge is required:
 5. Setup the ssh keys for github
 6. Clone the repo anywhere you desire. I suggest inside `~/dev/`
 
-
 ## Helpful Tools
+
 List of some tools that you may find useful while developing:
+
 - `Robo 3T`: Mongodb visualiser
 - `Postman`: Send http requests
 - `Sublime`: Text editor

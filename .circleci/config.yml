@@ -1,0 +1,110 @@
+version: 2.1
+executors:
+  base_image:
+    docker:
+      # The node version and os env to use
+      - image: danman1188/node:circleci
+  docker_publisher:
+    environment:
+      CAPTAIN_AMERICA: danman1188/captain-america
+    docker:
+      - image: circleci/buildpack-deps:stretch
+jobs:
+  build-test:
+    executor: base_image
+    working_directory: ~/avengers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-root-dep-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-root-dep-
+      - run:
+          name: Setup the codebase
+          command: npm run setup
+      - save_cache:
+          key: v1-root-dep-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Lint code
+          command: |
+            npx commitlint-circle
+            npx eslint **/*.ts
+            npx prettier **/*.{md,html,css}
+            # npx speccy lint openapi/**/*.{yml, yaml}
+      - run:
+          name: Build and test
+          command: |
+            npx lerna run build
+            npx jest
+  release:
+    docker:
+      - image: danman1188/node:circleci
+    working_directory: ~/avengers
+    steps:
+      - checkout
+      - run:
+          name: Tag and release
+          command: semantic-release
+      - persist_to_workspace:
+          root: ~/avengers
+          paths:
+            - '*'
+  build-deploy-docker:
+    executor: docker_publisher
+    working_directory: ~/avengers
+    parameters:
+      run_checkout:
+        type: boolean
+        default: true
+    steps:
+      - when:
+          condition: << parameters.run_checkout >>
+          steps:
+            - checkout
+      - unless:
+          condition: << parameters.run_checkout >>
+          steps:
+            - attach_workspace:
+                at: ~/avengers
+      - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t $CAPTAIN_AMERICA:$CIRCLE_BUILD_NUM -f ~/avengers/packages/captain-america/Dockerfile ~/avengers
+      - run:
+          name: Save Docker image
+          command: |
+            mkdir ~/artifacts
+            docker save -o ~/artifacts/captain-america.tar $CAPTAIN_AMERICA:$CIRCLE_BUILD_NUM
+      - run:
+          name: Load saved Docker image
+          command: docker load -i ~/artifacts/captain-america.tar
+      - run:
+          name: Publish Docker image
+          command: |
+            docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
+            docker push $CAPTAIN_AMERICA:$CIRCLE_BUILD_NUM
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build-test:
+          filters:
+            branches:
+              ignore:
+                - master
+  deploy:
+    jobs:
+      - release:
+          filters:
+            branches:
+              only: master
+      - build-deploy-docker:
+          requires:
+            - release
+          run_checkout: false
+          filters:
+            branches:
+              only: master
