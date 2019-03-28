@@ -1,15 +1,15 @@
 {
-  "name": "@avengers/captain-america",
+  "name": "@avengers/shield",
   "version": "0.0.0",
-  "description": "The main server",
+  "description": "The public facing interface",
   "keywords": [
-    "server",
-    "backend"
+    "public",
+    "interfaces"
   ],
   "author": "Daniel Lee <danman1188@gmail.com>",
-  "homepage": "",
+  "homepage": "https://github.com/danman1188/avengers#readme",
   "license": "ISC",
-  "main": "build/server.ts",
+  "main": "src/index.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -19,12 +19,7 @@
     "url": "git+https://github.com/danman1188/avengers.git"
   },
   "dependencies": {
-    "koa": "^2.7.0",
-    "koa-router": "^7.4.0",
     "tslib": "^1.9.3"
   },
-  "devDependencies": {
-    "@types/koa": "^2.0.48",
-    "@types/koa-router": "^7.0.40"
-  }
+  "devDependencies": {}
 }

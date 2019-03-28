@@ -10,9 +10,7 @@ Some `homebrew` and `npm` knowledge is required:
    - `git`
    - `mongodb`
 4. Install the following npm packages globally:
-   - `@angular/cli`
    - `lerna`
-   - `nativescript`
 5. Setup the ssh keys for github
 6. Clone the repo anywhere you desire. I suggest inside `~/dev/`
 
